@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-// ✅ Zod validation schema
 const signinSchema = z.object({
   email: z.string().email("Invalid email"),
   password: z.string().min(6, "Password must be at least 6 characters"),
@@ -25,6 +24,10 @@ export default function SigninForm() {
   } = useForm<SigninFormData>({
     resolver: zodResolver(signinSchema),
   });
+
+  const goSignup=()=>{
+    router.push('/signup')
+  }
 
   const onSubmit = async (data: SigninFormData) => {
     try {
@@ -109,6 +112,14 @@ export default function SigninForm() {
           className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition"
         >
           {loading ? "Signing In..." : "Sign In"}
+        </button>
+
+          <button
+          type="button"
+        
+          className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-md transition"
+        onClick={goSignup} >
+          Sign Up Instead
         </button>
       </form>
     </div>

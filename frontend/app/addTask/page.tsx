@@ -143,6 +143,14 @@ const onSubmit = async (data: TaskFormData) => {
       >
         Go to Your Tasks
       </button>
+       <button
+        type="button"
+        onClick={() => router.push('/logout')}
+        className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-md transition
+"
+      >
+        Log out
+      </button>
       </form>
 
     </div>
